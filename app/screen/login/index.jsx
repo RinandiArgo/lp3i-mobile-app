@@ -5,15 +5,29 @@ import {ICGoogle, ICFacebook} from '../../../assets'
 
 const windowWidth = Dimensions.get('window').width;
 
-export default function LoginScreen(){
+export default function LoginScreen({navigation}){
 const[email, onChangeEmail] = React.useState('')
 const[password, onChangePassword] = React.useState('')
 
 
 const onSubmitLogin =()=>{
-    alert(email)
-}
+    try{
+        if(email.trim().length === 0){
+            throw Error('Harap masukkan email anda')
+        }
+        if(password.trim().length === 0){
+            throw Error('Harap masukkan password anda')
+        }
 
+    navigation.navigate('Home')
+}catch (err){
+    Alert.alert('Error', err.message,[
+        {text: 'OK', onPress: () =>{
+            console.log('ERR')
+        }},
+    ]);
+}
+}
 
 return(
 <ScrollView>
@@ -52,12 +66,17 @@ return(
     color='#000113'
     title="Login"></Button>
     </View>
+    <Text style={style.textContinueStyle}>Or Continue With</Text>
     <View style={style.btnContainer}>
     <MyButton
     text="Google" imgUrl={ICGoogle}/>
     <MyButton
     style={{marginLeft:15}}
     text="Facebook" imgUrl={ICFacebook}/>
+    </View>
+    <View style={style.containerBottom}>
+        <Text style={{color:'#AEB6BF'}}>Don't have account? </Text>
+        <Text style={{fontWeight:'bold'}}>Create Now</Text>
     </View>
     </View>
     </ScrollView>
@@ -90,9 +109,18 @@ const style= StyleSheet.create({
         fontWeight:'bold'
     },
     btnContainer:{
-        flex:1,
+        flex:2,
         flexDirection:'row',
         padding:20,
+    },
+    textContinueStyle:{
+        textAlign: 'center'
+    },
+    containerBottom:{
+        flex:1,
+        flexDirection:'row',
+        justifyContent:'center',
+        margin:50
     }
 
 })
