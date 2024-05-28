@@ -1,7 +1,8 @@
-import { View, Text, TextInput, StyleSheet, Button, ImageBackground, Dimensions, Image, ScrollView} from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button, ImageBackground, Dimensions, Image, ScrollView, Alert} from 'react-native';
 import React from 'react'
 import {MyButton} from '../../components'
 import {ICGoogle, ICFacebook} from '../../../assets'
+
 
 const windowWidth = Dimensions.get('window').width;
 
