@@ -34,13 +34,12 @@ const styles= StyleSheet.create({
     },
     textContainer:{
         flex:1,
-        textAlign : 'center',
+        justifyContent: 'center',
         alignItems:'center'
     },
     textSplash:{
         color:'white',
         fontSize:25,
         fontWeight:'bold',
-        textAlign : 'center'
     }
 })

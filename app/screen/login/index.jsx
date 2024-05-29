@@ -1,6 +1,6 @@
-import { View, Text, TextInput, StyleSheet, Button, ImageBackground, Dimensions, Image, ScrollView, Alert} from 'react-native';
+import { View, Text, TextInput, StyleSheet, Button, ImageBackground, Dimensions, Image, ScrollView, Alert, TouchableOpacity} from 'react-native';
 import React from 'react'
-import {MyButton} from '../../components'
+import {MyButton, FbButton} from '../../components'
 import {ICGoogle, ICFacebook} from '../../../assets'
 
 
@@ -20,7 +20,7 @@ const onSubmitLogin =()=>{
             throw Error('Harap masukkan password anda')
         }
 
-    navigation.navigate('Home')
+    navigation.replace('Home')
 }catch (err){
     Alert.alert('Error', err.message,[
         {text: 'OK', onPress: () =>{
@@ -29,7 +29,9 @@ const onSubmitLogin =()=>{
     ]);
 }
 }
-
+const onRegister=()=>{
+    navigation.navigate("RegisterName")
+}
 return(
 <ScrollView>
     <View>
@@ -77,7 +79,9 @@ return(
     </View>
     <View style={style.containerBottom}>
         <Text style={{color:'#AEB6BF'}}>Don't have account? </Text>
+        <TouchableOpacity onPress={onRegister}>
         <Text style={{fontWeight:'bold'}}>Create Now</Text>
+        </TouchableOpacity>
     </View>
     </View>
     </ScrollView>
@@ -92,7 +96,9 @@ const style= StyleSheet.create({
         height:40,
         marginTop:12,
         borderWidth:1,
+        borderRadius:5,
         padding:10,
+        borderColor: '#c7c7c7'
     },
     textLoginStyle:{
         fontSize:32,
@@ -113,15 +119,17 @@ const style= StyleSheet.create({
         flex:2,
         flexDirection:'row',
         padding:20,
+        paddingRight:20
     },
     textContinueStyle:{
-        textAlign: 'center'
+        textAlign: 'center',
+        padding: 10
     },
     containerBottom:{
         flex:1,
         flexDirection:'row',
         justifyContent:'center',
-        margin:50
+        padding:30
     }
 
 })
