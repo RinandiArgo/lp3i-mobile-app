@@ -2,28 +2,50 @@ import {
     View, 
     Text, 
     StyleSheet, 
-    ScrollView
+    ScrollView, Alert
 } from "react-native";  
 import { 
     CustomeInput,
     FbButton
-} from '../../components'
+} from '../../components';
+import { useSelector, useDispatch } from 'react-redux';
+import {setFirstName, setSureName} from '../../store/reducer/regitserReducer'
 
-export default function RegisterInputNameScreen(){
+const onNextInput = ()=>{
+   try{
+        if(typeof regitser.firstName === null || regitser.firstName === ""){
+            throw Error('Harap masukkan nama awalan anda')
+        }
+        if(typeof regitser.sureName === null || regitser.sureName === ""){
+            throw Error('Harap masukkan nama akhir anda')
+        }
+        navigation.navigate('RegisterDate')
+    }catch (err){
+        Alert.alert('Error', err.message,[
+            {text: 'OK', onPress: () =>{
+                console.log('ERR')
+            }},
+        ]);
+    }
+    }
+
+export default function RegisterInputNameScreen(navigation){
+const register = useSelector((state) => state.register.formInput)
+const dispatch = useDispatch()
     return(
         <ScrollView style={styles.container}>
             <Text style={styles.textHeader}>What's your name?</Text>
             <Text>Enter the name you use in real life.</Text>
-            
+
             <View style={styles.containerInput}>
-                <CustomeInput 
+                <CustomeInput value={register.firstName} onChangeText={(value)=> dispatch (setFirstName (value))}
                     label="First name"/>
                 
-                <CustomeInput 
+                <CustomeInput value={register.sureName} onChangeText={(value)=> dispatch (setSureName (value))}
                     label="Surename"/>
             </View>
 
-            <FbButton title="Next"/>
+            <FbButton onPress={onNextInput} title="Next"/>
             
         </ScrollView>
     )

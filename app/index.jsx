@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import store from './store';
+import { Provider } from 'react-redux';
 import{
   LoginScreen,
   HomeScreen,
@@ -15,6 +17,7 @@ const Stack = createNativeStackNavigator();
 
 function App() {
   return (
+  <Provider store={store}>
     <NavigationContainer independent={true}>
       <Stack.Navigator initialRouteName="Splash">
         <Stack.Screen name="Home" component={HomeScreen} />
@@ -28,6 +31,7 @@ function App() {
         <Stack.Screen name="RegisterPassword" component={RegisterInputPasswordScreen}/>
       </Stack.Navigator>
     </NavigationContainer>
+  </Provider>
   );
 }
 
