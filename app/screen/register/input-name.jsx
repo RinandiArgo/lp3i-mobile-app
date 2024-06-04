@@ -11,12 +11,16 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import {setFirstName, setSureName} from '../../store/reducer/regitserReducer'
 
+export default function RegisterInputNameScreen({navigation}){
+    const register = useSelector((state) => state.register.formInput)
+    const dispatch = useDispatch()
+
 const onNextInput = ()=>{
    try{
-        if(typeof regitser.firstName === null || regitser.firstName === ""){
+        if(typeof register.firstName === null || register.firstName === ""){
             throw Error('Harap masukkan nama awalan anda')
         }
-        if(typeof regitser.sureName === null || regitser.sureName === ""){
+        if(typeof register.sureName === null || register.sureName === ""){
             throw Error('Harap masukkan nama akhir anda')
         }
         navigation.navigate('RegisterDate')
@@ -28,10 +32,6 @@ const onNextInput = ()=>{
         ]);
     }
     }
-
-export default function RegisterInputNameScreen(navigation){
-const register = useSelector((state) => state.register.formInput)
-const dispatch = useDispatch()
     return(
         <ScrollView style={styles.container}>
             <Text style={styles.textHeader}>What's your name?</Text>
