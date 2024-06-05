@@ -4,7 +4,7 @@ import {
     FbButton
 } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
-import {setDate} from '../../store/reducer/regitserReducer'
+import {setDate} from '../../store/reducer/registerReducer'
 
 export default function RegisterInputDateScreen({navigation}){
     const register = useSelector((state) => state.register.formInput)

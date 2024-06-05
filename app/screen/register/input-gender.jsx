@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 import {  FbButton } from '../../components'
-import {setGender} from '../../store/reducer/regitserReducer'
+import {setGender} from '../../store/reducer/registerReducer'
 
 
 const Item = ({item, onPress, backgroundColor, textColor}) => (

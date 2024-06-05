@@ -9,7 +9,7 @@ import {
     FbButton
 } from '../../components';
 import { useSelector, useDispatch } from 'react-redux';
-import {setFirstName, setSureName} from '../../store/reducer/regitserReducer'
+import {setFirstName, setSureName} from '../../store/reducer/registerReducer'
 
 export default function RegisterInputNameScreen({navigation}){
     const register = useSelector((state) => state.register.formInput)

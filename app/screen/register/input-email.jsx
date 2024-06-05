@@ -10,7 +10,7 @@ import {
     FbButton
 } from '../../components'
 import { useSelector, useDispatch } from 'react-redux'
-import {setEmail} from '../../store/reducer/regitserReducer'
+import {setEmail} from '../../store/reducer/registerReducer'
 
 
 export default function RegisterInputEmailScreen({navigation}){
