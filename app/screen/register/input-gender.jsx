@@ -85,7 +85,8 @@ export default function RegisterInputGenderScreen({navigation}){
 
 const styles = StyleSheet.create({
     container:{
-        padding:15
+        padding:15,
+        flex:1
     },
     containerInput:{
         marginTop:20,
@@ -94,5 +95,14 @@ const styles = StyleSheet.create({
     textHeader:{
         fontWeight:'700',
         fontSize:24,
+    },
+    item:{
+        fontSize:15
+    },
+    title:{
+        fontSize:14
+    },
+    nextButton:{
+        flexDirection:'row'
     }
   });
