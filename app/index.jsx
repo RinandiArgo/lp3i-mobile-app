@@ -11,16 +11,48 @@ import{
   RegisterInputDateScreen,
   RegisterInputGenderScreen,
   RegisterInputEmailScreen,
-  RegisterInputPasswordScreen
+  RegisterInputPasswordScreen,
+  ProfileScreen
 } from "./screen"
-const Stack = createNativeStackNavigator();
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
+
+function MainScreen(){
+  return(
+    <Tab.Navigator initialRouteName="Home" screenOptions={{tabBarActiveTintColor:'#e91e63'}}>
+      <Tab.Screen name="Home"
+      component={HomeScreen}
+      options={{
+        tabBarLabel:'Profile',
+        tabBarIcon:({color, size}) => (
+          <MaterialCommunityIcons name="account" color={color} size={size}/>
+        ),
+      }}
+      />
+
+      <Tab.Screen
+      name="Profile"
+      component={ProfileScreen}
+      options={{
+        tabBarLabel: 'Profile',
+        tabBarIcon: ({color, size}) =>(
+          <MaterialCommunityIcons name="account" color={color} size={size}/>
+        ),
+      }}
+      />
+    </Tab.Navigator>
+  )
+
+}
 function App() {
   return (
   <Provider store={store}>
     <NavigationContainer independent={true}>
       <Stack.Navigator initialRouteName="Splash">
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Main" options={{headerShown:false}} component={MainScreen} />
         <Stack.Screen name="Splash" options={{headerShown:false}}component={SplashScreen}/>
         <Stack.Screen name="Login"  options={{headerShown:false}}component={LoginScreen} />
 
